@@ -1,0 +1,39 @@
+name: Pipeline de Integração Contínua Estoque Gerber
+
+on:
+  push:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    # Configura para utilizar o Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+    # Realiza o checkout do código do repositório para a VM
+    - name: Checkout do código
+      uses: actions/checkout@v3
+
+    # Instala o Python
+    - name: Instalando o Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    # Instala as dependências do requirements.txt
+    - name: Instalando dependências
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r api/requirements.txt
+
+    # Executa o Flake8 para análise estática de código
+    - name: Análise estática utilizando o Flake8
+      run: |
+        flake8 api/ --max-line-length=120
+
+    # Executa os testes unitários utilizando o Pytest
+    - name: Executar testes unitários (Pytest)
+      env:
+        PYTHONPATH: .
+      run: |
+        pytest api/tests/
