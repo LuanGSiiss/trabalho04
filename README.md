@@ -1,15 +1,35 @@
+Trabalho 04
 PROJETO ESTOQUE GERBER
+
 
 ## Descrição
 O seguinte documento apresenta o Sistema de Estoque Gerber, sendo uma API RESTFUL feita com Python com o microframework Flask. 
 
 O projeto utiliza práticas de desenvolvimento de software com a cultura DevOps, simulando uma base de dados através de um arquivo JSON externo e garantindo a qualidade do código com um pipeline de Integração Contínua configurado via GitHub Actions. 
 
+
+## Estrutura do Projeto
+```text
+trabalho04/
+├── api/
+│   ├── app.py
+│   ├── requirements.txt
+│   ├── data/
+│   │   └── produtos.json
+│   └── tests/
+│       └── test_api.py
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+└── README.md
+```
+
+
 ## Como rodar
 
 ### Requisitos
 
-- Pyhton instalado na versão > 3.10  ;
+- Pyhton instalado na versão 3.10 ou maior;
 
 ### Passos
 *no Windows
